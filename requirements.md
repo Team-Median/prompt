@@ -69,3 +69,12 @@ Examples include:
     - Our web scraper will be utilized within the command line, they will be given options between pre-selected shops. This makes the process very user friendly, and easy to use. Once the application has been turned on, it will return the results in a easy to read format.
 
 Pick 2 non-functional requirements and describe their functionality in your application.
+
+## Working Doc Links
+
+Below are links to our Working google docs:
+
+1. Mock Up:
+https://docs.google.com/presentation/d/1SWBAjJXceREa7V6lhg4yFn_Gb3JaTqAsJQqLuxo8ivQ/edit?usp=sharing 
+
+2. 
