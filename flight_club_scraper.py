@@ -23,7 +23,7 @@ shoe_list = []# creating list to hold and manipulate results
 for result in results:
     shoe_list.append(result)# append results to list
 
-shoe_list = shoe_list[:5]
+shoe_list = shoe_list[:5]#shorten results list to first 5
 
 for shoe in list(shoe_list):# must make a copy of list before iterating and removing
     if '$' not in shoe.text:# iterate through list of results and remove items not in stock
