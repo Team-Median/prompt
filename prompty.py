@@ -1,3 +1,4 @@
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,3 +8,4 @@ from time import sleep
 import pandas as pd
 
 browser = webdriver.Chrome
+
