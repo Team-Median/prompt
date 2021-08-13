@@ -33,3 +33,5 @@ links = [elem.get_attribute('href') for elem in shoe_list]# list comprehension t
 
 for link in links:
   print(link)
+
+#driver.quit()

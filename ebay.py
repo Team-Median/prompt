@@ -34,3 +34,5 @@ for result in result_list:
 
 for link in link_list:
   print(link) #ebay links are veeeeery long
+
+#driver.quit()
