@@ -12,7 +12,7 @@ driver = webdriver.Chrome()  # Optional argument, if not specified will search p
 driver.get('http://www.flightclub.com/') # Opens Browser to main site
 time.sleep(1) # 1 second pause
 search_box = driver.find_element_by_id('NavigationSearchInput') # finds the search box
-search_box.send_keys('NIKE LEBRON 8 V/2 LOW “SOLAR RED”')# enters selected item into search box
+search_box.send_keys("women's air jordan 1 seafoam")# enters selected item into search box
 time.sleep(1) # 1 second pause
 search_box.send_keys(Keys.ENTER)# Presses the "Enter" key to start search. most websites can use submit function below
 time.sleep(1) # 1 second pause. give time for results to return
