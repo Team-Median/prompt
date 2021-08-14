@@ -27,8 +27,18 @@ for result in results:
 
 result_list = result_list[:5]#shortening results list to only the first 5
 
+for idx, result in enumerate(result_list):# prints the top 5 links along with corresponding number
+    print(f"{idx} - {result.text}")
+
+print("Please type the corresponding number of the item you would like")
+user_input = input(">")
+
+chosen_indexes = [int(i) for i in str(user_input)]#turn suser input into list of chosen numbers
+chosen_list = [result_list[i] for i in chosen_indexes]# creates a list of only the items the user chose
+
+
 link_list = []
-for result in result_list:
+for result in chosen_list:
     link = driver.find_element_by_xpath("//*[@id='srp-river-results']/ul/li[1]/div/div[2]/a").get_attribute('href')
     link_list.append(link)
 
