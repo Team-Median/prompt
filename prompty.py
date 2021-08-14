@@ -16,7 +16,7 @@ print(f.renderText(">  prompt"))
 
 print(
     """> Welcome! We help you by checking availability of your items at the following stores:
-[BBY]Best Buy, [NWE]Newegg, [FOT]Footlocker
+[BBY]Best Buy, [NWE]Newegg, [FOT]Footlocker, [FCL]FlightClub, [EBY]Ebay
 
 > 1. Search for the item at one of the stores listed above.
   2. Copy the URL from that search.
