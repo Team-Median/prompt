@@ -37,7 +37,7 @@ if split_search_string[0].upper() == "FCL":
     t = threading.Timer(5.0, fcs.check_item_from_fc_link, args=(item_check_link,))
     t.start()
   else:
-    search_phrase = split_search_string[1]
+    search_phrase = search_string.split(" ", 1)[1]
     import flight_club_scraper as fcs
     fcs.fc_site_search('http://www.flightclub.com/', search_phrase)
 
