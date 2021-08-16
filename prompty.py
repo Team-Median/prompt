@@ -54,16 +54,16 @@ if split_search_string[0].upper() == "FOT":
     fot.flocker_site_search('http://www.footlocker.com/', search_phrase)
 
 # For ebay
-# if split_search_string[0].upper() == "EBY":
-#   if split_search_string[1][0:4] == "http":
-#     item_check_link = split_search_string[1]
-#     import ebay_scraper as eby
-#     t = threading.Timer(5.0, eby.check_item_from_ebay_link, args=(item_check_link,))
-#     t.start()
-#   else:
-#     search_phrase = search_string.split(" ", 1)[1]
-#     import ebay_scraper as eby
-#     eby.ebay_site_search('http://www.ebay.com/', search_phrase)
+if split_search_string[0].upper() == "EBY":
+  if split_search_string[1][0:4] == "http":
+    item_check_link = split_search_string[1]
+    import ebay_scraper as eby
+    t = threading.Timer(5.0, eby.check_item_from_ebay_link, args=(item_check_link,))
+    t.start()
+  else:
+    search_phrase = search_string.split(" ", 1)[1]
+    import ebay_scraper as eby
+    eby.ebay_site_search('http://www.ebay.com/', search_phrase)
 
 
 # > <Coming Soon> [store code], [Search Result URL] <Enter>
