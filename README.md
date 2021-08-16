@@ -1,16 +1,20 @@
 # Quick Introduction
 
-## prompt
+Hello, We are Team Prompt!
+
+Our product will allow a user to simplify the process of checking on whether an item is in stock. By automating the process and programming it to run at specific intervals, it removes the redundancy of refreshing the page. Our product doesn't need to eat or use the restroom, it will continue to run as long as the user needs it to.
+
+## Team Prompt
 
 -------------
 
-## Daniel Dills
+## [Daniel Dills](https://github.com/danieldills)
 
-## Michael Hendrix
+## [Michael Hendrix](https://github.com/mhendricks96)
 
-## Kevin Henry
+## [Kevin Henry](https://github.com/kevinhenry)
 
-## Garfield Grant
+## [Garfield Grant](https://github.com/Marleyman876)
 
 -------------
 

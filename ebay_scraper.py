@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
-import bs4
 
 driver = webdriver.Chrome()
 driver.get('https://ebay.com/')
