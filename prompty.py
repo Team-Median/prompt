@@ -16,7 +16,7 @@ print(f.renderText(">  prompt"))
 
 print(
     """> Welcome! We help you by checking availability of your items at the following stores:
-[BBY]Best Buy, [NWE]Newegg, [FOT]Footlocker, [FCL]FlightClub, [EBY]Ebay
+[FOT]Footlocker, [FCL]FlightClub, [EBY]Ebay, [NWE]Newegg
 
 > 1. Search for the item at one of the stores listed above.
   2. Copy the URL from that search.
@@ -37,9 +37,34 @@ if split_search_string[0].upper() == "FCL":
     t = threading.Timer(5.0, fcs.check_item_from_fc_link, args=(item_check_link,))
     t.start()
   else:
-    search_phrase = split_search_string[1]
+    search_phrase = search_string.split(" ", 1)[1]
     import flight_club_scraper as fcs
     fcs.fc_site_search('http://www.flightclub.com/', search_phrase)
+
+# For FootLocker
+if split_search_string[0].upper() == "FOT":
+  if split_search_string[1][0:4] == "http":
+    item_check_link = split_search_string[1]
+    import footlocker_scraper as fot
+    t = threading.Timer(5.0, fot.check_item_from_flocker_link, args=(item_check_link,))
+    t.start()
+  else:
+    search_phrase = search_string.split(" ", 1)[1]
+    import footlocker_scraper as fot
+    fot.flocker_site_search('http://www.footlocker.com/', search_phrase)
+
+# For ebay
+if split_search_string[0].upper() == "EBY":
+  if split_search_string[1][0:4] == "http":
+    item_check_link = split_search_string[1]
+    import ebay_scraper as eby
+    t = threading.Timer(5.0, eby.check_item_from_ebay_link, args=(item_check_link,))
+    t.start()
+  else:
+    search_phrase = search_string.split(" ", 1)[1]
+    import ebay_scraper as eby
+    eby.ebay_site_search('http://www.ebay.com/', search_phrase)
+
 
 # > <Coming Soon> [store code], [Search Result URL] <Enter>
 

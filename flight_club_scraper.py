@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
-import bs4
 import threading
 
 driver = webdriver.Chrome()  # Optional argument, if not specified will search path.
@@ -93,10 +92,12 @@ def check_item_from_fc_link(fc_link):
         print(f"Your item is available at - {fc_link}")
         open_website(fc_link) #opens website of given url
        
-        time.sleep(1)
+        time.sleep(3)
         button2 = driver.find_element_by_class_name("sc-1t2dcr4-0")
         button2.click()
-        time.sleep(1)
+        time.sleep(3)
+        
+
         
 
         buttons_list = driver.find_elements_by_tag_name("button")
@@ -107,6 +108,7 @@ def check_item_from_fc_link(fc_link):
             # else:
             #     pass
         
+        time.sleep(3)
 
 if __name__ == "__main__":
 
