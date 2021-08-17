@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import pandas as pd
 import threading
-
+import helpdoc 
 # from footlocker_scraper import site3
 
 from welcome import welcome
@@ -61,7 +61,12 @@ def main():
     0 : Exit"""
             )
     choice = input("\nEnter your choice : ")
-    search_string = input("\nWhat would you like to search for? : ")
+    
+    if choice == '5': 
+        print(helpdoc.helpdoc())  
+    else:
+        search_string = input("\nWhat would you like to search for? : ")
+    
 
     if choice == '1':
         import ebay_scraper as eby
@@ -73,9 +78,8 @@ def main():
         import footlocker_scraper as fot
         fot.flocker_site_search('https://www.footlocker.de/', search_string)
     elif choice == '4' :
-        new_egg_scrapper()
-    elif choice == '5' :
-        help_doc()
+        import newegg_scraper as newegg
+        newegg.newegg_site_search('https://www.newegg.com/', search_string)
     elif choice == '0':
         print('Thanks for checking out > prompt')
         exit()
