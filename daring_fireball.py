@@ -18,7 +18,7 @@ from welcome import welcome
 
 # f = Figlet(font="slant")
 # print(f.renderText(">  prompt"))
-# 
+#
 # print(
 #     """> Welcome! We help you by checking availability of your items at the following stores:
 # [BBY]Best Buy, [NWE]Newegg, [FOT]Footlocker
@@ -31,9 +31,9 @@ from welcome import welcome
 # )
 
 # from progress.bar import Bar
-# 
-# bar = Bar('Loading', max=20)
-# for i in range (20):
+
+# bar = Bar("Loading", max=20)
+# for i in range(20):
 #     # Any Task
 #     bar.next()
 # bar.finish()
@@ -44,45 +44,50 @@ def main():
     """
     Simple CLI for querying
     """
-    
+
     os.system("clear")
     print(welcome("> prompt"))
-    print("\Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker")
+    print(
+        "\Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker"
+    )
     print("> 1. Choose the stor you want to start checking.")
     print("> 2. Input your search item.")
     print("> 3. When we find your item is available, follow the link.")
     print("\nChoose the store you want to start checking : ")
-    print("""
+    print(
+        """
     1 : eBay 
     2 : Flight Club
     3 : Footlocker
     4 : Newegg
     5 : Help
     0 : Exit"""
-            )
+    )
     choice = input("\nEnter your choice : ")
     search_string = input("\nWhat would you like to search for? : ")
 
-    if choice == '1':
+    if choice == "1":
         import ebay_scraper as eby
-        eby.ebay_site_search('http://www.ebay.com/', search_string)
-    elif choice == '2' :
+
+        eby.ebay_site_search("http://www.ebay.com/", search_string)
+    elif choice == "2":
         import flight_club_scraper as fcs
-        fcs.fc_site_search('http://www.flightclub.com/', search_string)
-    elif choice == '3' :
+
+        fcs.fc_site_search("http://www.flightclub.com/", search_string)
+    elif choice == "3":
         import footlocker_scraper as fot
-        fot.flocker_site_search('http://www.footlocker.com/', search_string)
-    elif choice == '4' :
+
+        fot.flocker_site_search("http://www.footlocker.com/", search_string)
+    elif choice == "4":
         bby_scrapper()
-    elif choice == '5' :
+    elif choice == "5":
         help_doc()
-    elif choice == '0':
-        print('Thanks for checking out > prompt')
+    elif choice == "0":
+        print("Thanks for checking out > prompt")
         exit()
     else:
-        print('Invalid choice. Please enter a number between 1 and 5 or 0.')
+        print("Invalid choice. Please enter a number between 1 and 5 or 0.")
     os.system("clear")
-
 
 
 # @main.command()
@@ -119,8 +124,8 @@ def main():
 #     response = requests.get(url_format.format(id))
 #     click.echo(response.json())
 
-    # with open('data.json', 'w') as f:
-    # json.dump(extracted_data, f, indent=4)
+# with open('data.json', 'w') as f:
+# json.dump(extracted_data, f, indent=4)
 
 
 # def parse(self, response):
