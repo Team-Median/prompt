@@ -54,7 +54,7 @@ def send_user_requested_links(xpath, list_of_items):
         link = driver.find_element_by_xpath(xpath).get_attribute('href')
         link_list.append(link)
     for link in link_list:
-        print(link)
+        print(f'Link : {link}')
     return link_list
 
 def ebay_site_search(website, search_string):

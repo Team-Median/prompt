@@ -6,3 +6,4 @@ from pyfiglet import Figlet
 def welcome(text):
     result = Figlet(font="slant")
     return colored.cyan(result.renderText(text))
+  

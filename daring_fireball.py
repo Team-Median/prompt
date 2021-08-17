@@ -4,9 +4,15 @@ from pyfiglet import Figlet
 import re, click, urllib, json, time, requests
 from requests.models import Response
 from selenium import webdriver
-from ebay import site
-from flight_club_scraper import flight_club_scrapper
-from footlocker_scraper import site3
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from time import sleep
+import pandas as pd
+import threading
+
+# from footlocker_scraper import site3
 
 from welcome import welcome
 
@@ -33,81 +39,85 @@ from welcome import welcome
 # bar.finish()
 
 
-@click.group()
+# @click.group()
 def main():
     """
     Simple CLI for querying
     """
-    while True:
-        os.system("clear")
-        print(welcome("> prompt"))
-        print("\Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker")
-        print("> 1. Choose the stor you want to start checking.")
-        print("> 2. Input your search item.")
-        print("> 3. When we find your item is available, follow the link.")
-        print("\nChoose the store you want to start checking : ")
-        print("""
-        1 : eBay 
-        2 : Flight Club
-        3 : Footlocker
-        4 : Best Buy
-        5 : Help
-        0 : Exit"""
-              )
-        choice = input("\nEnter your choice : ")
+    
+    os.system("clear")
+    print(welcome("> prompt"))
+    print("\Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker")
+    print("> 1. Choose the stor you want to start checking.")
+    print("> 2. Input your search item.")
+    print("> 3. When we find your item is available, follow the link.")
+    print("\nChoose the store you want to start checking : ")
+    print("""
+    1 : eBay 
+    2 : Flight Club
+    3 : Footlocker
+    4 : Newegg
+    5 : Help
+    0 : Exit"""
+            )
+    choice = input("\nEnter your choice : ")
+    search_string = input("\nWhat would you like to search for? : ")
 
-        if choice == '1':
-            ebay.ebay()
-        elif choice == '2' :
-            flight_club_scrapper()
-        elif choice == '3' :
-            footlocker_scrapper()
-        elif choice == '4' :
-            bby_scrapper()
-        elif choice == '5' :
-            help_doc()
-        elif choice == '0':
-            print('Thanks for checking out > prompt')
-            exit()
-        else:
-            print('Invalid choice. Please enter a number between 1 and 5 or 0.')
-        os.system("clear")
-
-
-
-@main.command()
-@click.argument("query")
-def search(query):
-    """This search query from YouTube Videos"""
-    url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-
-    # Search by ChannelID
-    # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-    # url_format = "https://googleapis.com/books/v1/volumes"
-    query = "+".join(query.split())
-
-    query_params = {"q": query}
-
-    response = requests.get(url_format, params=query_params)
-
-    click.echo(response.json()["items"])
+    if choice == '1':
+        import ebay_scraper as eby
+        eby.ebay_site_search('http://www.ebay.com/', search_string)
+    elif choice == '2' :
+        import flight_club_scraper as fcs
+        fcs.fc_site_search('http://www.flightclub.com/', search_string)
+    elif choice == '3' :
+        import footlocker_scraper as fot
+        fot.flocker_site_search('http://www.footlocker.com/', search_string)
+    elif choice == '4' :
+        bby_scrapper()
+    elif choice == '5' :
+        help_doc()
+    elif choice == '0':
+        print('Thanks for checking out > prompt')
+        exit()
+    else:
+        print('Invalid choice. Please enter a number between 1 and 5 or 0.')
+    os.system("clear")
 
 
-@main.command()
-@click.argument("id")
-def get(id):
-    # api_key = "AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-    # channelId = "UCWr0mx597DnSGLFk1WfvSkQ"
-    """This will return information about videos based upon your query"""
-    url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-    base_video_url = "https://www.youtube.com/watch?v="
-    # Search by ChannelID
-    # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-    # url_format = "https://www.googleapis.com/books/v1/volumes/{}"
-    click.echo(id)
 
-    response = requests.get(url_format.format(id))
-    click.echo(response.json())
+# @main.command()
+# @click.argument("query")
+# def search(query):
+#     """This search query from YouTube Videos"""
+#     url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
+
+#     # Search by ChannelID
+#     # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
+#     # url_format = "https://googleapis.com/books/v1/volumes"
+#     query = "+".join(query.split())
+
+#     query_params = {"q": query}
+
+#     response = requests.get(url_format, params=query_params)
+
+#     click.echo(response.json()["items"])
+
+
+# @main.command()
+# @click.argument("id")
+# def get(id):
+#     # api_key = "AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
+#     # channelId = "UCWr0mx597DnSGLFk1WfvSkQ"
+#     """This will return information about videos based upon your query"""
+#     url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
+#     base_video_url = "https://www.youtube.com/watch?v="
+#     # Search by ChannelID
+#     # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
+#     # url_format = "https://www.googleapis.com/books/v1/volumes/{}"
+#     click.echo(id)
+
+#     response = requests.get(url_format.format(id))
+#     click.echo(response.json())
 
     # with open('data.json', 'w') as f:
     # json.dump(extracted_data, f, indent=4)

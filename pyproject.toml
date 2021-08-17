@@ -13,8 +13,8 @@ pyfiglet = "^0.8.post1"
 requests = "^2.26.0"
 click = "^8.0.1"
 numpy = "^1.21.1"
-colorama = "^0.4.4"
 clint = "^0.5.1"
+colorama = "^0.4.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

@@ -55,12 +55,9 @@ def send_user_requested_links(xpath, list_of_items):
     '''
     grabs the link to every item selected by user and displays in terminal
     '''
-    link_list = []
-    for item in list_of_items:
-        links = [elem.get_attribute('href') for elem in list_of_items]# list comprehension to grab the links to each available item in the results list
-        link_list.append(links)
+    link_list = [elem.get_attribute('href') for elem in list_of_items]# list comprehension to grab the links to each available item in the results list
     for link in link_list:
-        print(link)
+        print(f'Link : {link}')
     return link_list
 
 def fc_site_search(website, search_string):
@@ -74,7 +71,6 @@ def fc_site_search(website, search_string):
     item_list = capture_results_into_list_of_5(results)
     chosen_list = get_users_choice_of_items(item_list)
     send_user_requested_links("//*[@id='main']/div/div[2]/div/section/div/div[2]/ul/li[3]/div/a", chosen_list)
-    #driver.quit()
 
 
 
