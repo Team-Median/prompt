@@ -31,7 +31,7 @@ from welcome import welcome
 # )
 
 # from progress.bar import Bar
-# 
+
 # bar = Bar('Loading', max=20)
 # for i in range (20):
 #     # Any Task
@@ -47,7 +47,7 @@ def main():
     
     os.system("clear")
     print(welcome("> prompt"))
-    print("\Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker")
+    print("Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker")
     print("> 1. Choose the stor you want to start checking.")
     print("> 2. Input your search item.")
     print("> 3. When we find your item is available, follow the link.")
@@ -71,9 +71,9 @@ def main():
         fcs.fc_site_search('http://www.flightclub.com/', search_string)
     elif choice == '3' :
         import footlocker_scraper as fot
-        fot.flocker_site_search('http://www.footlocker.com/', search_string)
+        fot.flocker_site_search('https://www.footlocker.de/', search_string)
     elif choice == '4' :
-        bby_scrapper()
+        new_egg_scrapper()
     elif choice == '5' :
         help_doc()
     elif choice == '0':
@@ -81,9 +81,9 @@ def main():
         exit()
     else:
         print('Invalid choice. Please enter a number between 1 and 5 or 0.')
-    os.system("clear")
-
-
+    time.sleep(10)
+    os.system('clear')
+    main() #returns user to original screen for other search options
 
 # @main.command()
 # @click.argument("query")
