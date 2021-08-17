@@ -1,6 +1,6 @@
 from clint.textui import colored
-from colorama import Fare, Back, Style
-from pyfiglet import pyfiglet
+from colorama import Fore, Back, Style
+from pyfiglet import Figlet
 
 
 def welcome(text):
