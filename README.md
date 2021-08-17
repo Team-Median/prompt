@@ -2,7 +2,7 @@
 
 Hello, We are Team Prompt!
 
-Our product will allow a user to simplify the process of checking on whether an item is in stock. By automating the process and programming it to run at specific intervals, it removes the redundancy of refreshing the page. Our product doesn't need to eat or use the restroom, it will continue to run as long as the user needs it to.
+Our product will allow a user to simplify the process of checking on whether an item is in stock. By automating the process and programming it to run at specific intervals, it removes the redundancy of refreshing the page. Our product doesn't need to eat or use the restroom, it will continue to run as long as the user needs it to. Ok
 
 ## Team Prompt
 
