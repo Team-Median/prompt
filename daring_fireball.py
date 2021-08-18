@@ -11,46 +11,20 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import pandas as pd
 import threading
-
-# from footlocker_scraper import site3
-
+import helpdoc
 from welcome import welcome
 
-# f = Figlet(font="slant")
-# print(f.renderText(">  prompt"))
-#
-# print(
-#     """> Welcome! We help you by checking availability of your items at the following stores:
-# [BBY]Best Buy, [NWE]Newegg, [FOT]Footlocker
-# > 1. Search for the item at one of the stores listed above.
-#   2. Copy the URL from that search.
-#   3. At the prompt, type the [store code], [search result URL for your item] and press [Enter]
-# > <Coming Soon> [store code], [Search Result URL] <Enter>
-# > <For Now> We took your keyword and applied that to the search on YouTube. Enjoy Searching…!
-# """
-# )
 
-# from progress.bar import Bar
-
-# bar = Bar('Loading', max=20)
-# for i in range (20):
-#     # Any Task
-#     bar.next()
-# bar.finish()
-
-
-# @click.group()
 def main():
     """
     Simple CLI for querying
     """
-
     os.system("clear")
     print(welcome("> prompt"))
     print(
         "Welcome! We help you by checking availability of your items at the following stores: Best Buy, Newegg, Footlocker"
     )
-    print("> 1. Choose the stor you want to start checking.")
+    print("> 1. Choose the store you want to start checking.")
     print("> 2. Input your search item.")
     print("> 3. When we find your item is available, follow the link.")
     print("\nChoose the store you want to start checking : ")
@@ -61,10 +35,43 @@ def main():
     3 : Footlocker
     4 : Newegg
     5 : Help
+    6 : ACTIVATE PROMPT BOT
     0 : Exit"""
     )
     choice = input("\nEnter your choice : ")
-    search_string = input("\nWhat would you like to search for? : ")
+
+    if choice == "6":
+        search_site = input("Select the store ('1-4') you would like PROMPT BOT to search : ")
+        search_string = input("\nPaste URL : ")
+
+        if search_site == "1":
+            import ebay_scraper as eby
+
+            t = threading.Timer(5.0, eby.check_item_from_ebay_link, args=(search_string,))
+            t.start()
+            return
+        elif search_site == "2":
+            import flight_club_scraper as fcs
+
+            t = threading.Timer(5.0, fcs.check_item_from_fc_link, args=(search_string,))
+            t.start()
+            return
+        elif search_site == "3":
+            import footlocker_scraper as fot
+
+            t = threading.Timer(5.0, fot.check_item_from_flocker_link, args=(search_string,))
+            t.start()
+            return
+        elif search_site == "4":
+            import newegg_scraper as newegg
+
+            t = threading.Timer(5.0, newegg.check_item_from_newegg_link, args=(search_string,))
+            t.start()
+            return
+    if choice == "5":
+        print(helpdoc.helpdoc())
+    else:
+        search_string = input("\nWhat would you like to search for? : ")
 
     if choice == "1":
         import ebay_scraper as eby
@@ -81,11 +88,7 @@ def main():
     elif choice == "4":
         import newegg_scraper as newegg
 
-        newegg.site_search("http://www.newegg.com/", search_string)
-    elif choice == "5":
-        import helpdoc as help
-
-        print()
+        newegg.newegg_site_search("https://www.newegg.com/", search_string)
     elif choice == "0":
         print("Thanks for checking out > prompt")
         exit()
@@ -94,87 +97,6 @@ def main():
     time.sleep(10)
     os.system("clear")
     main()  # returns user to original screen for other search options
-
-
-# @main.command()
-# @click.argument("query")
-# def search(query):
-#     """This search query from YouTube Videos"""
-#     url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-
-#     # Search by ChannelID
-#     # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-#     # url_format = "https://googleapis.com/books/v1/volumes"
-#     query = "+".join(query.split())
-
-#     query_params = {"q": query}
-
-#     response = requests.get(url_format, params=query_params)
-
-#     click.echo(response.json()["items"])
-
-
-# @main.command()
-# @click.argument("id")
-# def get(id):
-#     # api_key = "AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-#     # channelId = "UCWr0mx597DnSGLFk1WfvSkQ"
-#     """This will return information about videos based upon your query"""
-#     url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={}&type=video&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-#     base_video_url = "https://www.youtube.com/watch?v="
-#     # Search by ChannelID
-#     # url_format = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=UCWr0mx597DnSGLFk1WfvSkQ&type=channelId&key=AIzaSyAUuEmNYCYQcxsjztXWU14N5uqhW0lThD4"
-#     # url_format = "https://www.googleapis.com/books/v1/volumes/{}"
-#     click.echo(id)
-
-#     response = requests.get(url_format.format(id))
-#     click.echo(response.json())
-
-# with open('data.json', 'w') as f:
-# json.dump(extracted_data, f, indent=4)
-
-
-# def parse(self, response):
-#     with open("data_file.json", "w") as filee:
-#         filee.write("[")
-#         for index, quote in enumerate(response.css("div.quote")):
-#             json.dump(
-#                 {
-#                     "text": quote.css("span.text::text").extract_first(),
-#                     "author": quote.css(".author::text").get(),
-#                     "tags": quote.css(".tag::text").getall(),
-#                 },
-#                 filee,
-#             )
-#             if index < len(response.css("div.quote")) - 1:
-#                 filee.write(",")
-#         filee.write("]")
-
-# json_data = requests.get(url_format).json()
-# json_status = json_data["status"]
-# print("API Status: " + json_status)
-
-
-#     inp = urllib.request.urlopen(url_format).read()
-#     resp = json.load(inp)
-#     vidID = resp["items"][0]["id"]["videoId"]
-
-#     video_exists = False
-#     with open("videoid.json", "r") as json_file:
-#         data = json.load(json_file)
-#         if data["videoID"] != vidID:
-#             driver = webdriver.FireFox()
-#             driver.get(base_video_url + vidID)
-#             video_exists = True
-
-#     if video_exists:
-#         with open("videoid.json", "w") as jason_file:
-#             data = {"videoId": vidID}
-#             json.dump(data, json_file)
-
-# try:
-#     while True"
-#     look
 
 
 if __name__ == "__main__":
