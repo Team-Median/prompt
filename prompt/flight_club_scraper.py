@@ -93,16 +93,12 @@ def check_item_from_fc_link(fc_link):
         button2.click()
         time.sleep(3)
         
-
-        
-
         buttons_list = driver.find_elements_by_tag_name("button")
 
         for button in buttons_list:
             if button.text == "CHECK OUT":
                 button.click()
-            # else:
-            #     pass
+                return
         
         time.sleep(3)
 
