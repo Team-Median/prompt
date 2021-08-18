@@ -76,10 +76,23 @@ def check_item_from_ebay_link(ebay_link):
     '''
     open_website(ebay_link)
     time.sleep(1)
-    button = driver.find_element_by_class_name("Button")
+    #button = driver.find_element_by_class_name("Button")
+    print(f"Your item is available at - {ebay_link}")
+    return
+    # if button.text == "ADD TO CART":
+    #     print(f"Your item is available at - {ebay_link}")
+    # else:
+    #     print("still out of stock")
+    #     driver.quit()
 
-    if button.text == "ADD TO CART":
-        print(f"Your item is available at - {ebay_link}")
-    else:
-        print("still out of stock")
-        driver.quit()
+    if __name__ == "__main__":
+
+        item_check_link = "https://www.ebay.com/itm/294342139756?hash=item4488289f6c:g:CxUAAOSwCMhhFmWo"
+    
+        t = threading.Timer(5.0, check_item_from_ebay_link, args=(item_check_link,))
+        t.start()
+
+        #ebay_site_search('http://www.ebay.com/', "AIR JORDAN 1 HIGH RETRO")
+    
+    
+        #check_item_from_ebay_link("https://www.ebay.com/itm/294342139756?hash=item4488289f6c:g:CxUAAOSwCMhhFmWo")
