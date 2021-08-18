@@ -11,8 +11,8 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import pandas as pd
 import threading
-import helpdoc
-from welcome import welcome
+import prompt.helpdoc
+from prompt.welcome import welcome
 
 
 def main():
@@ -45,48 +45,48 @@ def main():
         search_string = input("\nPaste URL : ")
 
         if search_site == "1":
-            import ebay_scraper as eby
+            import prompt.ebay_scraper as eby
 
             t = threading.Timer(5.0, eby.check_item_from_ebay_link, args=(search_string,))
             t.start()
             return
         elif search_site == "2":
-            import flight_club_scraper as fcs
+            import prompt.flight_club_scraper as fcs
 
             t = threading.Timer(5.0, fcs.check_item_from_fc_link, args=(search_string,))
             t.start()
             return
         elif search_site == "3":
-            import footlocker_scraper as fot
+            import prompt.footlocker_scraper as fot
 
             t = threading.Timer(5.0, fot.check_item_from_flocker_link, args=(search_string,))
             t.start()
             return
         elif search_site == "4":
-            import newegg_scraper as newegg
+            import prompt.newegg_scraper as newegg
 
             t = threading.Timer(5.0, newegg.check_item_from_newegg_link, args=(search_string,))
             t.start()
             return
     if choice == "5":
-        print(helpdoc.helpdoc())
+        print(prompt.helpdoc.helpdoc())
     else:
         search_string = input("\nWhat would you like to search for? : ")
 
     if choice == "1":
-        import ebay_scraper as eby
+        import prompt.ebay_scraper as eby
 
         eby.ebay_site_search("http://www.ebay.com/", search_string)
     elif choice == "2":
-        import flight_club_scraper as fcs
+        import prompt.flight_club_scraper as fcs
 
         fcs.fc_site_search("http://www.flightclub.com/", search_string)
     elif choice == "3":
-        import footlocker_scraper as fot
+        import prompt.footlocker_scraper as fot
 
         fot.flocker_site_search("https://www.footlocker.de/", search_string)
     elif choice == "4":
-        import newegg_scraper as newegg
+        import prompt.newegg_scraper as newegg
 
         newegg.newegg_site_search("https://www.newegg.com/", search_string)
     elif choice == "0":
