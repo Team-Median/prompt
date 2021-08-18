@@ -16,6 +16,7 @@ clint = "^0.5.1"
 colorama = "^0.4.4"
 pyfiglet = "^0.8.post1"
 progress = "^1.6"
+coverage = "^5.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

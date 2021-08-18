@@ -74,7 +74,7 @@ def main():
         fcs.fc_site_search('http://www.flightclub.com/', search_string)
     elif choice == '3' :
         import footlocker_scraper as fot
-        fot.flocker_site_search('https://www.footlocker.de/', search_string)
+        fot.flocker_site_search('https://www.footlocker.com/', search_string)
     elif choice == '4' :
         import newegg_scraper as newegg
         newegg.newegg_site_search('https://www.newegg.com/', search_string)
@@ -90,42 +90,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# def read_template(path):
-#     with open(path) as text:
-#         contents = text.read()
-#         stripped_contents = contents.strip()
-#         return stripped_contents
-
-
-# def parse_template(text):
-#     new = tuple(re.findall(r"\{(.*?)\}", text))
-#     length = len(new)
-#     for i in range(0, length):
-#         if i == 0:
-#             print(i)
-#             new_text = text.replace(new[i], "")
-#         else:
-#             new_text = new_text.replace(new[i], "")
-#     return new_text, new
-
-
-# def user_prompt(words):
-#     print("Please type a response to the prompt and press [ENTER]")
-#     responses = []
-#     for word in words:
-#         responses.append(input(f"Type (a/an) {word}: "))
-#     return responses
-
-
-# def merge(strip, res):
-#     length = len(res)
-#     for i in range(0, length):
-#         if i == 0:
-#             story = strip.replace("{}", res[i], 1)
-#         else:
-#             story = story.replace("{}", res[i], 1)
-#     return story
 
 
 # def output():
