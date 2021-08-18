@@ -82,10 +82,17 @@ def check_item_from_flocker_link(flocker_link):
         print(f"Your item is available at - {flocker_link}")
     else:
         print("still out of stock")
-        driver.quit()
-
+        #driver.quit()
+        time.sleep(5)
+        check_item_from_flocker_link(flocker_link)
 
 if __name__ == "__main__":
+    
+    item_check_link = "https://www.footlocker.com/en/product/~/H0957001.html"
+
     flocker_site_search("http://www.footlocker.com/", "Jordan Flight Club '91")
 
-    #check_item_from_flocker_link("https://www.footlocker.com/product/jordan-aj-1-low-boys-grade-school/53560605.html")
+    #check_item_from_flocker_link(item_check_link)
+
+    # t = threading.Timer(5.0, check_item_from_flocker_link, args=(item_check_link,))
+    # t.start()
