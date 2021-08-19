@@ -14,9 +14,7 @@ def open_website(url): #opens website of given url
     driver.get(url)
 
 def search_main_search_bar(el_id, search_string):
-    '''
-    opens the search bar and searches for given string
-    '''
+    '''opens the search bar and searches for given string'''
     search_box = driver.find_element_by_id(el_id) # finds the search box
     search_box.send_keys(search_string)
     time.sleep(1)
@@ -36,8 +34,19 @@ def capture_results_into_list_of_5(results):
     #     if '$' not in item.text:
     #         item_list.remove(item)
     
-    item_list = item_list[:5]
-    return item_list
+    original_list = item_list[:5]
+    return original_list
+
+def create_index_list(user_input):
+    '''turn user input into list of chosen numbers'''
+    chosen_indexes = [int(i) for i in str(user_input)]
+    return chosen_indexes
+
+def create_chosen_list(original_list, chosen_indexes):
+    '''creates a list of only the chosen items'''
+    chosen_list = [original_list[i] for i in chosen_indexes]
+    return chosen_list
+
 
 def get_users_choice_of_items(original_list):
     '''
@@ -47,8 +56,8 @@ def get_users_choice_of_items(original_list):
         print(f"{idx} - {shoe.text}") 
     print("Please type the corresponding number of the item you would like")
     user_input = input(">")
-    chosen_indexes = [int(i) for i in str(user_input)]#turn suser input into list of chosen numbers
-    chosen_list = [original_list[i] for i in chosen_indexes]# creates a list of only the chosen items
+    chosen_indexes = create_index_list(user_input)
+    chosen_list = create_chosen_list(original_list, chosen_indexes)# creates a list of only the chosen items
     return chosen_list
 
 def send_user_requested_links(xpath, list_of_items):
@@ -106,10 +115,10 @@ if __name__ == "__main__":
 
     item_check_link = "https://www.flightclub.com/air-jordan-1-high-retro-gs-black-varsity-red-011064"
     
-    t = threading.Timer(5.0, check_item_from_fc_link, args=(item_check_link,))
-    t.start()
+    # t = threading.Timer(5.0, check_item_from_fc_link, args=(item_check_link,))
+    # t.start()
 
-    #fc_site_search('http://www.flightclub.com/', "AIR JORDAN 1 HIGH RETRO")
+    fc_site_search('http://www.flightclub.com/', "AIR JORDAN 1 HIGH RETRO")
     
     
     #check_item_from_fc_link("https://www.flightclub.com/air-jordan-1-high-retro-gs-white-black-varsity-green-011065")
