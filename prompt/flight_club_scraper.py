@@ -81,6 +81,11 @@ def fc_site_search(website, search_string):
     chosen_list = get_users_choice_of_items(item_list)
     send_user_requested_links("//*[@id='main']/div/div[2]/div/section/div/div[2]/ul/li[3]/div/a", chosen_list)
 
+def display_out_of_stock():
+    print("display_out_of_stock")
+
+
+
 
 
 def check_item_from_fc_link(fc_link):
@@ -89,8 +94,7 @@ def check_item_from_fc_link(fc_link):
     button1 = driver.find_element_by_class_name("sc-1t2dcr4-0")
 
     if button1.text == "OUT OF STOCK":
-        print("still out of stock")
-        #driver.close()
+        display_out_of_stock()
         time.sleep(5)
         check_item_from_fc_link(fc_link)
     else:
