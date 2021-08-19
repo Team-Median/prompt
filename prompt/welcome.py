@@ -1,11 +1,11 @@
 from clint.textui import colored
 from colorama import Fore, Back, Style
 
-# print(Fore.RED + "some red text")
-print(Back.BLACK + "and with a green background")
-print(Style.BRIGHT + "and in dim text")
+print(Fore.RED + "Adding installation modification modifiers")
+print(Back.BLACK + "Reticulating splines...")
+print(Style.BRIGHT + "Rendering spiders...")
 print(Style.RESET_ALL)
-print("back to normal now")
+print("Please wait...")
 from pyfiglet import Figlet
 
 
