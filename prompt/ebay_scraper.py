@@ -88,14 +88,9 @@ def check_item_from_ebay_link(ebay_link):
     '''
     open_website(ebay_link)
     time.sleep(1)
-    #button = driver.find_element_by_class_name("Button")
     print(f"Your item is available at - {ebay_link}")
     return
-    # if button.text == "ADD TO CART":
-    #     print(f"Your item is available at - {ebay_link}")
-    # else:
-    #     print("still out of stock")
-    #     driver.quit()
+    
 
     if __name__ == "__main__":
 

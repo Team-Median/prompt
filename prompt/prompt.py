@@ -107,23 +107,3 @@ if __name__ == "__main__":
     main()
 
 
-# def output():
-#     stripped, prompts = parse_template(read_template("../assets/hitlist_template.txt"))
-
-#     res = user_prompt(prompts)
-#     f = open("../assets/output.txt", "w")
-#     f.write(merge(stripped, res))
-#     f.close()
-#     print(merge(stripped, res))
-
-
-# output()
-
-# Kevin this is for the CSV output
-
-# r = requests.request("GET", url, headers=headers, params=querystring)
-# data = r.json()
-# for p in data["plpView"]["products"]["products"]["product"]:
-#     res.append(p)
-# df = pd.json_normalize(res)
-# df.to_csv("firstresults.csv")
