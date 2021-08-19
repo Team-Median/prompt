@@ -33,6 +33,18 @@ def capture_results_into_list_of_5(results):
     item_list = item_list[:5]
     return item_list
 
+def create_index_list(user_input):
+    '''turn user input into list of chosen numbers'''
+    chosen_indexes = [int(i) for i in str(user_input)]
+    return chosen_indexes
+
+def create_chosen_list(original_list, chosen_indexes):
+    '''creates a list of only the chosen items'''
+    chosen_list = [original_list[i] for i in chosen_indexes]
+    return chosen_list
+
+
+
 def get_users_choice_of_items(original_list):
     '''
     Shows list of results to user and grabs only the items that the user selects
@@ -41,8 +53,8 @@ def get_users_choice_of_items(original_list):
         print(f"{idx} - {shoe.text}") 
     print("Please type the corresponding number of the item you would like")
     user_input = input(">")
-    chosen_indexes = [int(i) for i in str(user_input)]#turn suser input into list of chosen numbers
-    chosen_list = [original_list[i] for i in chosen_indexes]# creates a list of only the chosen items
+    chosen_indexes = create_index_list(user_input)#turn suser input into list of chosen numbers
+    chosen_list = create_chosen_list(original_list, chosen_indexes)# creates a list of only the chosen items
     return chosen_list
 
 def send_user_requested_links(xpath, list_of_items):
