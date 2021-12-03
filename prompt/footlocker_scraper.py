@@ -8,9 +8,10 @@ import time
 import pandas as pd
 
 
-driver = webdriver.Chrome() #define Chromedriver
+driver = webdriver.Chrome()
 
-def open_website(url): #opens website of given url
+def open_website(url):
+    '''opens website of given url'''
     driver.get(url)
 
 def search_main_search_bar(xpath, search_string):
@@ -50,12 +51,13 @@ def get_users_choice_of_items(original_list):
     '''
     Shows list of results to user and grabs only the items that the user selects
     '''
-    for idx, shoe in enumerate(original_list):# prints the top 5 links along with corresponding number
-        print(f"{idx} - {shoe.text}") 
+    for idx, shoe in enumerate(original_list):
+        print(f"{idx} - {shoe.text}")
+        
     print("Please type the corresponding number of the item you would like")
     user_input = input(">")
-    chosen_indexes = create_index_list(user_input)#turn suser input into list of chosen numbers
-    chosen_list = create_chosen_list(original_list, chosen_indexes)# creates a list of only the chosen items
+    chosen_indexes = create_index_list(user_input)
+    chosen_list = create_chosen_list(original_list, chosen_indexes)
     return chosen_list
 
 def send_user_requested_links(xpath, list_of_items):
@@ -100,12 +102,6 @@ def check_item_from_flocker_link(flocker_link):
         check_item_from_flocker_link(flocker_link)
 
 if __name__ == "__main__":
-    
-    item_check_link = "https://www.footlocker.com/en/product/~/H0957001.html"
 
     flocker_site_search("http://www.footlocker.com/", "Jordan Flight Club '91")
 
-    #check_item_from_flocker_link(item_check_link)
-
-    # t = threading.Timer(5.0, check_item_from_flocker_link, args=(item_check_link,))
-    # t.start()
