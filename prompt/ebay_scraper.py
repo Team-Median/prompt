@@ -80,7 +80,6 @@ def ebay_site_search(website, search_string):
     item_list = capture_results_into_list_of_5(results)
     chosen_list = get_users_choice_of_items(item_list)
     send_user_requested_links("//*[@id='srp-river-results']/ul/li[1]/div/div[2]/a", chosen_list)
-    #driver.quit()
 
 def check_item_from_ebay_link(ebay_link):
     '''
@@ -99,7 +98,3 @@ def check_item_from_ebay_link(ebay_link):
         t = threading.Timer(5.0, check_item_from_ebay_link, args=(item_check_link,))
         t.start()
 
-        #ebay_site_search('http://www.ebay.com/', "AIR JORDAN 1 HIGH RETRO")
-    
-    
-        #check_item_from_ebay_link("https://www.ebay.com/itm/294342139756?hash=item4488289f6c:g:CxUAAOSwCMhhFmWo")
